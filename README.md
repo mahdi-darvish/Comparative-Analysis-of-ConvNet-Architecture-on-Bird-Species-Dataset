@@ -11,7 +11,7 @@ This is an implementation of famous convolutional neural networks on Bird specie
 - [Requirements](#requirements)
 - [Bird Species Dataset](#bird-species-dataset)
 - [Introduction to Convolutional Neural Networks Architecture](#introduction-to-convolutional-neural-networks-architecture)
-    1. [AlextNet - 2012](1-alextnet---2012)
+    1. [AlextNet - 2012](#1-alextnet---2012)
 
 
 ## Getting Started
@@ -64,13 +64,43 @@ AlexNet made use of the rectified linear activation function, or ReLU, as the no
 
 The average pooling used in LeNet-5 was replaced with a max pooling method, although in this case, overlapping pooling was found to outperform non-overlapping pooling that is commonly used today (e.g. stride of pooling operation is the same size as the pooling operation, e.g. 2 by 2 pixels). To address overfitting, the newly proposed dropout method was used between the fully connected layers of the classifier part of the model to improve generalization error.
 
-![Alexnet](/images/alexnet.webp)
+<figure class="image">
+  <img src="{{ /images/alexnet.webp }}" alt="{{ Architecture of the AlexNet Convolutional Neural Network }}">
+  <figcaption>{{ Architecture of the AlexNet Convolutional Neural Network }}</figcaption>
+</figure>
 
 The model has five convolutional layers in the feature extraction part of the model and three fully connected layers in the classifier part of the model.
 
 Input images were fixed to the size 224×224 with three color channels. In terms of the number of filters used in each convolutional layer, the pattern of increasing the number of filters with depth seen in LeNet was mostly adhered to, in this case, the sizes: 96, 256, 384, 384, and 256. Similarly, the pattern of decreasing the size of the filter (kernel) with depth was used, starting from the smaller size of 11×11 and decreasing to 5×5, and then to 3×3 in the deeper layers. Use of small filters such as 5×5 and 3×3 is now the norm.
 
 A pattern of a convolutional layer followed by pooling layer was used at the start and end of the feature detection part of the model. Interestingly, a pattern of convolutional layer followed immediately by a second convolutional layer was used. This pattern too has become a modern standard.
+
+## 2. VGG16 & VGG19 - 2014
+
+
+Their architecture is generally referred to as VGG after the name of their lab, the Visual Geometry Group at Oxford. Their model was developed and demonstrated on the sameILSVRC competition, in this case, the ILSVRC-2014 version of the challenge.
+
+The first important difference that has become a de facto standard is the use of a large number of small filters. Specifically, filters with the size 3×3 and 1×1 with the stride of one, different from the large sized filters in LeNet-5 and the smaller but still relatively large filters and large stride of four in AlexNet.
+
+Max pooling layers are used after most, but not all, convolutional layers, learning from the example in AlexNet, yet all pooling is performed with the size 2×2 and the same stride, that too has become a de facto standard. Specifically, the VGG networks use examples of two, three, and even four convolutional layers stacked together before a max pooling layer is used. The rationale was that stacked convolutional layers with smaller filters approximate the effect of one convolutional layer with a larger sized filter, e.g. three stacked convolutional layers with 3×3 filters approximates one convolutional layer with a 7×7 filter.
+
+Another important difference is the very large number of filters used. The number of filters increases with the depth of the model, although starts at a relatively large number of 64 and increases through 128, 256, and 512 filters at the end of the feature extraction part of the model.
+
+A number of variants of the architecture were developed and evaluated, although two are referred to most commonly given their performance and depth. They are named for the number of layers: they are the VGG-16 and the VGG-19 for 16 and 19 learned layers respectively.
+
+Below is a table taken from the paper; note the two far right columns indicating the configuration (number of filters) used in the VGG-16 and VGG-19 versions of the architecture.
+
+<figure class="image">
+  <img src="{{ /images/vgg.png }}" alt="{{ Architecture of the VGG Convolutional Neural Network (taken from the 2014 paper). }}">
+  <figcaption>{{ Architecture of the AlexNet Convolutional Neural Network }}</figcaption>
+</figure>
+
+The design decisions in the VGG models have become the starting point for simple and direct use of convolutional neural networks in general.
+
+Finally, the VGG work was among the first to release the valuable model weights under a permissive license that led to a trend among deep learning computer vision researchers. This, in turn, has led to the heavy use of pre-trained models like VGG in transfer learning as a starting point on new computer vision tasks.
+
+
+
 
 
 
