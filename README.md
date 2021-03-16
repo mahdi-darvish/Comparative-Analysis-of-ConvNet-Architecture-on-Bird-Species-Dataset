@@ -12,11 +12,14 @@ This is an implementation of famous convolutional neural networks on Bird specie
 - [Bird Species Dataset](#bird-species-dataset)
 - [Introduction to Convolutional Neural Networks Architecture](#introduction-to-convolutional-neural-networks-architecture)
     1. [AlextNet - 2012](#1-alextnet---2012)
-    2. [VGG16 & VGG19 - 2014]()
-    3. [InceptionV3 - 2015]()
-    4. [Residual Network or ResNet - 2016]()
-    5. [MobileNet - 2017]()
+    2. [VGG16 & VGG19 - 2014](#2-vgg16--vgg19---2014)
+    3. [InceptionV3 - 2015](#3-inceptionv3---2015)
+    4. [Residual Network or ResNet - 2016](#4-residual-network-or-resnet---2016)
+    5. [MobileNet - 2017](#5-mobilenet---2017)
 - [Results](#results)
+- [Conclution](#conclution)
+- [Further Ideas](#further-ideas)
+- [Refrences](#refrences)
 ## Getting Started
 
 - [Comparative-Analysis-of-ConvNet-Architecture-on-Bird-Species-Dataset.ipynb](https://github.com/mahdi-darvish/Comparative-Analysis-of-ConvNet-Architecture-on-Bird-Species-Dataset/blob/main/Comparative-Analysis-of-ConvNet-Architecture-on-Bird-Species-Dataset.ipynb) This is the main notebook containing python code to train the models and visualize the results.
@@ -41,7 +44,7 @@ The dataset is available on Kaggle. You can find more information and download t
 
 ## Introduction to Convolutional Neural Networks Architecture
 
-DISCLAIMER : some of the notes and defenitions in this section has taken from other articles, all of them are listed on [Refrences](#refrences)
+DISCLAIMER : Some of the notes and defenitions in this section has taken from other articles, all of them are listed on [Refrences](#refrences)
 
 
 Convolutional neural networks are comprised of two specific elements, namely convolutional layers and pooling layers.
@@ -113,7 +116,7 @@ Performing convolutions with larger filter sizes (e.g. 3 and 5) can be computati
 
 
 <figure class="image">
-  <img src="/images/inception_1.png" alt="Example of the Inception Module With Dimensionality Reduction (taken from the 2015 paper).">
+  <img src="/images/inception_1.webp" alt="Example of the Inception Module With Dimensionality Reduction (taken from the 2015 paper).">
   <figcaption>Example of the Inception Module With Dimensionality Reduction (taken from the 2015 paper).</figcaption>
 </figure>
 
@@ -150,9 +153,9 @@ The image below was taken from the paper and from left to right compares the arc
 
 We can summarize the key aspects of the architecture relevant in modern models as follows:
 
-    -Use of shortcut connections.
-    -Development and repetition of the residual blocks.
-    -Development of very deep (152-layer) models.
+    - Use of shortcut connections.
+    - Development and repetition of the residual blocks.
+    - Development of very deep (152-layer) models.
     
 
 ### 5. MobileNet - 2017
@@ -180,6 +183,15 @@ MobileNets are small, low-latency, low-power models parameterized to meet the re
 ## Conclution
 
 
+## Further Ideas
+
 ## Refrences
 
-## Further Ideas
+    #### Papers
+        > - [ImageNet Classification with Deep Convolutional Neural Networks,](http://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks, 2012)
+        > - [Very Deep Convolutional Networks for Large-Scale Image Recognition, 2014.](https://arxiv.org/abs/1409.1556)
+        > - [Going Deeper with Convolutions, 2015.](https://www.cv-foundation.org/openaccess/content_cvpr_2015/html/Szegedy_Going_Deeper_With_2015_CVPR_paper.html)
+        > - [Deep Residual Learning for Image Recognition, 2016.](https://www.cv-foundation.org/openaccess/content_cvpr_2016/html/He_Deep_Residual_Learning_CVPR_2016_paper.html)
+        > - [MobileNets: Efficient Convolutional Neural Networks, 2017.](https://arxiv.org/pdf/1704.04861.pdf)
+    ### other refrences
+    
