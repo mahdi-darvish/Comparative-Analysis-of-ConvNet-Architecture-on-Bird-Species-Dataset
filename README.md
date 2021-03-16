@@ -68,12 +68,12 @@ Let's dive deeper into how each of these models works and break down their archi
 AlexNet made use of the rectified linear activation function, or ReLU, as the nonlinearly after each convolutional layer, instead of S-shaped functions such as the logistic or tanh that were common up until that point. Also, a softmax activation function was used in the output layer, now a staple for multi-class classification with neural networks.
 
 The average pooling used in LeNet-5 was replaced with a max pooling method, although in this case, overlapping pooling was found to outperform non-overlapping pooling that is commonly used today (e.g. stride of pooling operation is the same size as the pooling operation, e.g. 2 by 2 pixels). To address overfitting, the newly proposed dropout method was used between the fully connected layers of the classifier part of the model to improve generalization error.
-<p align="center">
+<center>
 <figure class="image">
   <img src="/images/alexnet.webp" alt="Architecture of the AlexNet Convolutional Neural Network">
   <figcaption>Architecture of the AlexNet Convolutional Neural Network</figcaption>
 </figure>
-</p>
+</center>
 The model has five convolutional layers in the feature extraction part of the model and three fully connected layers in the classifier part of the model.
 
 Input images were fixed to the size 224×224 with three color channels. In terms of the number of filters used in each convolutional layer, the pattern of increasing the number of filters with depth seen in LeNet was mostly adhered to, in this case, the sizes: 96, 256, 384, 384, and 256. Similarly, the pattern of decreasing the size of the filter (kernel) with depth was used, starting from the smaller size of 11×11 and decreasing to 5×5, and then to 3×3 in the deeper layers. Use of small filters such as 5×5 and 3×3 is now the norm.
@@ -94,12 +94,12 @@ Another important difference is the very large number of filters used. The numbe
 A number of variants of the architecture were developed and evaluated, although two are referred to most commonly given their performance and depth. They are named for the number of layers: they are the VGG-16 and the VGG-19 for 16 and 19 learned layers, respectively.
 
 Below is a table is taken from the paper; note the two far right columns indicating the configuration (number of filters) used in the VGG-16 and VGG-19 versions of the architecture.
-<p align="center">
+<center>
 <figure class="image">
   <img src="/images/vgg.png" alt="Architecture of the VGG Convolutional Neural Network (taken from the 2014 paper).">
   <figcaption>Architecture of the AlexNet Convolutional Neural Network</figcaption>
 </figure>
-</p>
+</center>
 The design decisions in the VGG models have become the starting point for the simple and direct use of convolutional neural networks in general.
 
 Finally, the VGG work was among the first to release the valuable model weights under a permissive license that led to a trend among deep learning computer vision researchers. This, in turn, has led to the heavy use of pre-trained models like VGG in transfer learning as a starting point on new computer vision tasks.
