@@ -88,20 +88,20 @@ Their architecture is generally referred to as VGG after the name of their lab, 
 
 The first important difference that has become a de facto standard is the use of a large number of small filters. Specifically, filters with the size 3×3 and 1×1 with the stride of one, different from the large sized filters in LeNet-5 and the smaller but still relatively large filters and large stride of four in AlexNet.
 
-Max pooling layers are used after most, but not all, convolutional layers, learning from the example in AlexNet, yet all pooling is performed with the size 2×2 and the same stride, that too has become a de facto standard. Specifically, the VGG networks use examples of two, three, and even four convolutional layers stacked together before a max pooling layer is used. The rationale was that stacked convolutional layers with smaller filters approximate the effect of one convolutional layer with a larger sized filter, e.g. three stacked convolutional layers with 3×3 filters approximates one convolutional layer with a 7×7 filter.
+Max pooling layers are used after most, but not all, convolutional layers, learning from the example in AlexNet, yet all pooling is performed with the size 2×2 and the same stride, that too has become a de-facto standard. Specifically, the VGG networks use examples of two, three, and even four convolutional layers stacked together before a max-pooling layer is used. The rationale was that stacked convolutional layers with smaller filters approximate the effect of one convolutional layer with a larger sized filter, e.g., three stacked convolutional layers with 3×3 filters approximate one convolutional layer with a 7×7 filter.
 
-Another important difference is the very large number of filters used. The number of filters increases with the depth of the model, although starts at a relatively large number of 64 and increases through 128, 256, and 512 filters at the end of the feature extraction part of the model.
+Another important difference is the very large number of filters used. The number of filters increases with the depth of the model, although it starts at a relatively large number of 64 and increases through 128, 256, and 512 filters at the end of the feature extraction part of the model.
 
-A number of variants of the architecture were developed and evaluated, although two are referred to most commonly given their performance and depth. They are named for the number of layers: they are the VGG-16 and the VGG-19 for 16 and 19 learned layers respectively.
+A number of variants of the architecture were developed and evaluated, although two are referred to most commonly given their performance and depth. They are named for the number of layers: they are the VGG-16 and the VGG-19 for 16 and 19 learned layers, respectively.
 
-Below is a table taken from the paper; note the two far right columns indicating the configuration (number of filters) used in the VGG-16 and VGG-19 versions of the architecture.
+Below is a table is taken from the paper; note the two far right columns indicating the configuration (number of filters) used in the VGG-16 and VGG-19 versions of the architecture.
 
 <figure class="image">
   <img src="/images/vgg.png" alt="Architecture of the VGG Convolutional Neural Network (taken from the 2014 paper).">
   <figcaption>Architecture of the AlexNet Convolutional Neural Network</figcaption>
 </figure>
 
-The design decisions in the VGG models have become the starting point for simple and direct use of convolutional neural networks in general.
+The design decisions in the VGG models have become the starting point for the simple and direct use of convolutional neural networks in general.
 
 Finally, the VGG work was among the first to release the valuable model weights under a permissive license that led to a trend among deep learning computer vision researchers. This, in turn, has led to the heavy use of pre-trained models like VGG in transfer learning as a starting point on new computer vision tasks.
 
@@ -112,7 +112,7 @@ The key innovation on the inception models is called the inception module. This 
 
 A problem with a naive implementation of the inception model is that the number of filters (depth or channels) begins to build up fast, especially when inception modules are stacked.
 
-Performing convolutions with larger filter sizes (e.g. 3 and 5) can be computationally expensive on a large number of filters. To address this, 1×1 convolutional layers are used to reduce the number of filters in the inception model. Specifically before the 3×3 and 5×5 convolutional layers and after the pooling layer. The image below taken from the paper shows this change to the inception module.
+Performing convolutions with larger filter sizes (e.g., 3 and 5) can be computationally expensive on a large number of filters. To address this, 1×1 convolutional layers are used to reduce the number of filters in the inception model. Specifically before the 3×3 and 5×5 convolutional layers and after the pooling layer. The image below taken from the paper shows this change to the inception module.
 
 
 <figure class="image">
@@ -124,7 +124,7 @@ Performing convolutions with larger filter sizes (e.g. 3 and 5) can be computati
 
 A second important design decision in the inception model was connecting the output at different points in the model. This was achieved by creating small off-shoot output networks from the main network that were trained to make a prediction. The intent was to provide an additional error signal from the classification task at different points of the deep model in order to address the vanishing gradients problem. These small output networks were then removed after training.
 
-Overall, Inception-v3 is a convolutional neural network architecture from the Inception family that makes several improvements including using Label Smoothing, Factorized 7 x 7 convolutions, and the use of an auxiliary classifer to propagate label information lower down the network (along with the use of batch normalization for layers in the sidehead).
+Overall, Inception-v3 is a convolutional neural network architecture from the Inception family that makes several improvements, including using Label Smoothing, Factorized 7 x 7 convolutions, and the use of an auxiliary classifier to propagate label information lower down the network (along with the use of batch normalization for layers in the sidehead).
 
 
 <figure class="image">
@@ -135,15 +135,15 @@ Overall, Inception-v3 is a convolutional neural network architecture from the In
 
 ### 4. Residual Network or ResNet - 2016
 
-Residual networks model had an impressive 152 layers. Key to the model design is the idea of residual blocks that make use of shortcut connections. These are simply connections in the network architecture where the input is kept as-is (not weighted) and passed on to a deeper layer, e.g. skipping the next layer.
+The residual networks model had an impressive 152 layers. Key to the model design is the idea of residual blocks that make use of shortcut connections. These are simply connections in the network architecture where the input is kept as-is (not weighted) and passed on to a deeper layer, e.g., skipping the next layer.
 
-A residual block is a pattern of two convolutional layers with ReLU activation where the output of the block is combined with the input to the block, e.g. the shortcut connection. A projected version of the input used via 1×1 if the shape of the input to the block is different to the output of the block, so-called 1×1 convolutions. These are referred to as projected shortcut connections, compared to the unweighted or identity shortcut connections.
+A residual block is a pattern of two convolutional layers with ReLU activation where the output of the block is combined with the input to the block, e.g. the shortcut connection. A projected version of the input used via 1×1 if the shape of the input to the block is different from the output of the block, so-called 1×1 convolutions. These are referred to as projected shortcut connections compared to the unweighted or identity shortcut connections.
 
 The authors start with what they call a plain network, which is a VGG-inspired deep convolutional neural network with small filters (3×3), grouped convolutional layers followed with no pooling in between, and an average pooling at the end of the feature detector part of the model prior to the fully connected output layer with a softmax activation function.
 
-The plain network is modified to become a residual network by adding shortcut connections in order to define residual blocks. Typically the shape of the input for the shortcut connection is the same size as the output of the residual block.
+The plain network is modified to become a residual network by adding shortcut connections in order to define residual blocks. Typically, the shape of the input for the shortcut connection is the same size as the residual block's output.
 
-The image below was taken from the paper and from left to right compares the architecture of a VGG model, a plain convolutional model, and a version of the plain convolutional with residual modules, called a residual network.
+The image below was taken from the paper and from left to right compares the architecture of a VGG model, a plain convolutional model, and a version of the plain convolutional with residual modules called a residual network.
 
 
 <figure class="image">
@@ -160,7 +160,7 @@ We can summarize the key aspects of the architecture relevant in modern models a
 
 ### 5. MobileNet - 2017
 
-MobileNets are built on depthwise seperable convolution layers.Each depthwise seperable convolution layer consists of a depthwise convolution and a pointwise convolution.Counting depthwise and pointwise convolutions as seperate layers, a MobileNet has 28 layers.A standard MobileNet has 4.2 million parameters which can be further reduced by tuning the width multiplier hyperparameter appropriately.
+MobileNets are built on depthwise separable convolution layers.Each depthwise separable convolution layer consists of a depthwise convolution and a pointwise convolution. Counting depthwise and pointwise convolutions as separate layers, a MobileNet has 28 layers. A standard MobileNet has 4.2 million parameters which can be further reduced by tuning the width multiplier hyperparameter appropriately.
 The size of the input image is 224 × 224 × 3.
 
 The detailed architecture of a MobileNet is given below :
@@ -176,6 +176,15 @@ MobileNets are small, low-latency, low-power models parameterized to meet the re
 
 ## Results
 
+<figure class="image">
+  <img src="/images/results.png" alt="Architecture of the ResNet Convolutional Neural Network for image classification">
+  <figcaption>Architecture of the ResNet Convolutional Neural Network for image classification</figcaption>
+</figure>
+
+<figure class="image">
+  <img src="/images/test.jpg" alt="Architecture of the ResNet Convolutional Neural Network for image classification">
+  <figcaption>Architecture of the ResNet Convolutional Neural Network for image classification</figcaption>
+</figure>
 
 
 
@@ -185,11 +194,14 @@ MobileNets are small, low-latency, low-power models parameterized to meet the re
 
 ## Further Ideas
 
+The InceptionV3 model had a bad performance on the test set, and it seemed the model was overfitting the training set and couldn't perform well enough on the test set. My future goal is to figure out how to increase this model's accuracy and investigate the complicated structure of the Inception models and maybe tune the hyper-parameters better or find a more well-suited arrangement of layers. I will try to implement an inception model from scratch and get to know these models even better.
+
+
 ## Refrences
 
    ### Papers
    
-> - [ImageNet Classification with Deep Convolutional Neural Networks,](http://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks, 2012)
+> - [ImageNet Classification with Deep Convolutional Neural Networks, 2012.](http://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks)
 > - [Very Deep Convolutional Networks for Large-Scale Image Recognition, 2014.](https://arxiv.org/abs/1409.1556)
 > - [Going Deeper with Convolutions, 2015.](https://www.cv-foundation.org/openaccess/content_cvpr_2015/html/Szegedy_Going_Deeper_With_2015_CVPR_paper.html)
 > - [Deep Residual Learning for Image Recognition, 2016.](https://www.cv-foundation.org/openaccess/content_cvpr_2016/html/He_Deep_Residual_Learning_CVPR_2016_paper.html)
@@ -198,6 +210,6 @@ MobileNets are small, low-latency, low-power models parameterized to meet the re
   ### other refrences
 
 > - [Wiki: Convolutional neural network](https://en.wikipedia.org/wiki/Convolutional_neural_network)
-> - [https://towardsdatascience.com/a-comprehensive-guide-to-convolutional-neural-networks-the-eli5-way-3bd2b1164a53](A Comprehensive Guide to Convolutional Neural Networks)
-> - [https://machinelearningmastery.com/review-of-architectural-innovations-for-convolutional-neural-networks-for-image-classification/?unapproved=600474&moderation-hash=e231dae066102e3f68bd3a32ff68b640#comment-600474](Convolutional Neural Network Model Innovations for Image Classification)
+> - [A Comprehensive Guide to Convolutional Neural Networks](https://towardsdatascience.com/a-comprehensive-guide-to-convolutional-neural-networks-the-eli5-way-3bd2b1164a53)
+> - [Convolutional Neural Network Model Innovations for Image Classification](https://machinelearningmastery.com/review-of-architectural-innovations-for-convolutional-neural-networks-for-image-classification/?unapproved=600474&moderation-hash=e231dae066102e3f68bd3a32ff68b640#comment-600474)
 > - [Evolution of Convolutional Neural Network Architectures](https://medium.com/the-pen-point/evolution-of-convolutional-neural-network-architectures-6b90d067e403)
