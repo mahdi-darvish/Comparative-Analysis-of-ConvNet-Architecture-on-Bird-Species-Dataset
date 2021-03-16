@@ -187,11 +187,17 @@ MobileNets are small, low-latency, low-power models parameterized to meet the re
 
 ## Refrences
 
-    #### Papers
-        > - [ImageNet Classification with Deep Convolutional Neural Networks,](http://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks, 2012)
-        > - [Very Deep Convolutional Networks for Large-Scale Image Recognition, 2014.](https://arxiv.org/abs/1409.1556)
-        > - [Going Deeper with Convolutions, 2015.](https://www.cv-foundation.org/openaccess/content_cvpr_2015/html/Szegedy_Going_Deeper_With_2015_CVPR_paper.html)
-        > - [Deep Residual Learning for Image Recognition, 2016.](https://www.cv-foundation.org/openaccess/content_cvpr_2016/html/He_Deep_Residual_Learning_CVPR_2016_paper.html)
-        > - [MobileNets: Efficient Convolutional Neural Networks, 2017.](https://arxiv.org/pdf/1704.04861.pdf)
-    ### other refrences
-    
+   ### Papers
+   
+> - [ImageNet Classification with Deep Convolutional Neural Networks,](http://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks, 2012)
+> - [Very Deep Convolutional Networks for Large-Scale Image Recognition, 2014.](https://arxiv.org/abs/1409.1556)
+> - [Going Deeper with Convolutions, 2015.](https://www.cv-foundation.org/openaccess/content_cvpr_2015/html/Szegedy_Going_Deeper_With_2015_CVPR_paper.html)
+> - [Deep Residual Learning for Image Recognition, 2016.](https://www.cv-foundation.org/openaccess/content_cvpr_2016/html/He_Deep_Residual_Learning_CVPR_2016_paper.html)
+> - [MobileNets: Efficient Convolutional Neural Networks, 2017.](https://arxiv.org/pdf/1704.04861.pdf)
+
+  ### other refrences
+
+> - [Wiki: Convolutional neural network](https://en.wikipedia.org/wiki/Convolutional_neural_network)
+> - [https://towardsdatascience.com/a-comprehensive-guide-to-convolutional-neural-networks-the-eli5-way-3bd2b1164a53](A Comprehensive Guide to Convolutional Neural Networks)
+> - [https://machinelearningmastery.com/review-of-architectural-innovations-for-convolutional-neural-networks-for-image-classification/?unapproved=600474&moderation-hash=e231dae066102e3f68bd3a32ff68b640#comment-600474](Convolutional Neural Network Model Innovations for Image Classification)
+> - [Evolution of Convolutional Neural Network Architectures](https://medium.com/the-pen-point/evolution-of-convolutional-neural-network-architectures-6b90d067e403)
