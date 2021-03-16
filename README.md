@@ -12,8 +12,11 @@ This is an implementation of famous convolutional neural networks on Bird specie
 - [Bird Species Dataset](#bird-species-dataset)
 - [Introduction to Convolutional Neural Networks Architecture](#introduction-to-convolutional-neural-networks-architecture)
     1. [AlextNet - 2012](#1-alextnet---2012)
-
-
+    2. [VGG16 & VGG19 - 2014]()
+    3. [InceptionV3 - 2015]()
+    4. [Residual Network or ResNet - 2016]()
+    5. [MobileNet - 2017]()
+- [Results](#results)
 ## Getting Started
 
 - [Comparative-Analysis-of-ConvNet-Architecture-on-Bird-Species-Dataset.ipynb](https://github.com/mahdi-darvish/Comparative-Analysis-of-ConvNet-Architecture-on-Bird-Species-Dataset/blob/main/Comparative-Analysis-of-ConvNet-Architecture-on-Bird-Species-Dataset.ipynb) This is the main notebook containing python code to train the models and visualize the results.
@@ -58,15 +61,15 @@ By understanding these milestone models and their architecture or architectural 
 Let's dive deeper into how each of these models works and break down their architecture to get a better intuition.
 
 
-## 1. AlextNet - 2012
+### 1. AlextNet - 2012
 
 AlexNet made use of the rectified linear activation function, or ReLU, as the nonlinearly after each convolutional layer, instead of S-shaped functions such as the logistic or tanh that were common up until that point. Also, a softmax activation function was used in the output layer, now a staple for multi-class classification with neural networks.
 
 The average pooling used in LeNet-5 was replaced with a max pooling method, although in this case, overlapping pooling was found to outperform non-overlapping pooling that is commonly used today (e.g. stride of pooling operation is the same size as the pooling operation, e.g. 2 by 2 pixels). To address overfitting, the newly proposed dropout method was used between the fully connected layers of the classifier part of the model to improve generalization error.
 
 <figure class="image">
-  <img src="{{ /images/alexnet.webp }}" alt="{{ Architecture of the AlexNet Convolutional Neural Network }}">
-  <figcaption>{{ Architecture of the AlexNet Convolutional Neural Network }}</figcaption>
+  <img src="/images/alexnet.webp" alt="Architecture of the AlexNet Convolutional Neural Network">
+  <figcaption>Architecture of the AlexNet Convolutional Neural Network</figcaption>
 </figure>
 
 The model has five convolutional layers in the feature extraction part of the model and three fully connected layers in the classifier part of the model.
@@ -75,7 +78,7 @@ Input images were fixed to the size 224×224 with three color channels. In terms
 
 A pattern of a convolutional layer followed by pooling layer was used at the start and end of the feature detection part of the model. Interestingly, a pattern of convolutional layer followed immediately by a second convolutional layer was used. This pattern too has become a modern standard.
 
-## 2. VGG16 & VGG19 - 2014
+### 2. VGG16 & VGG19 - 2014
 
 
 Their architecture is generally referred to as VGG after the name of their lab, the Visual Geometry Group at Oxford. Their model was developed and demonstrated on the sameILSVRC competition, in this case, the ILSVRC-2014 version of the challenge.
@@ -91,8 +94,8 @@ A number of variants of the architecture were developed and evaluated, although 
 Below is a table taken from the paper; note the two far right columns indicating the configuration (number of filters) used in the VGG-16 and VGG-19 versions of the architecture.
 
 <figure class="image">
-  <img src="{{ /images/vgg.png }}" alt="{{ Architecture of the VGG Convolutional Neural Network (taken from the 2014 paper). }}">
-  <figcaption>{{ Architecture of the AlexNet Convolutional Neural Network }}</figcaption>
+  <img src="/images/vgg.png" alt="Architecture of the VGG Convolutional Neural Network (taken from the 2014 paper).">
+  <figcaption>Architecture of the AlexNet Convolutional Neural Network</figcaption>
 </figure>
 
 The design decisions in the VGG models have become the starting point for simple and direct use of convolutional neural networks in general.
@@ -100,7 +103,83 @@ The design decisions in the VGG models have become the starting point for simple
 Finally, the VGG work was among the first to release the valuable model weights under a permissive license that led to a trend among deep learning computer vision researchers. This, in turn, has led to the heavy use of pre-trained models like VGG in transfer learning as a starting point on new computer vision tasks.
 
 
+### 3. InceptionV3 - 2015
+
+The key innovation on the inception models is called the inception module. This is a block of parallel convolutional layers with different sized filters (e.g. 1×1, 3×3, 5×5) and a 3×3 max pooling layer, the results of which are then concatenated. Below is an example of the inception module taken from the paper.
+
+A problem with a naive implementation of the inception model is that the number of filters (depth or channels) begins to build up fast, especially when inception modules are stacked.
+
+Performing convolutions with larger filter sizes (e.g. 3 and 5) can be computationally expensive on a large number of filters. To address this, 1×1 convolutional layers are used to reduce the number of filters in the inception model. Specifically before the 3×3 and 5×5 convolutional layers and after the pooling layer. The image below taken from the paper shows this change to the inception module.
+
+
+<figure class="image">
+  <img src="/images/inception_1.png" alt="Example of the Inception Module With Dimensionality Reduction (taken from the 2015 paper).">
+  <figcaption>Example of the Inception Module With Dimensionality Reduction (taken from the 2015 paper).</figcaption>
+</figure>
+
+
+
+A second important design decision in the inception model was connecting the output at different points in the model. This was achieved by creating small off-shoot output networks from the main network that were trained to make a prediction. The intent was to provide an additional error signal from the classification task at different points of the deep model in order to address the vanishing gradients problem. These small output networks were then removed after training.
+
+Overall, Inception-v3 is a convolutional neural network architecture from the Inception family that makes several improvements including using Label Smoothing, Factorized 7 x 7 convolutions, and the use of an auxiliary classifer to propagate label information lower down the network (along with the use of batch normalization for layers in the sidehead).
+
+
+<figure class="image">
+  <img src="/images/inception_2.png" alt="Architecture of the InceptionV3 Convolutional Neural Network">
+  <figcaption>Architecture of the InceptionV3 Convolutional Neural Network</figcaption>
+</figure>
+
+
+### 4. Residual Network or ResNet - 2016
+
+Residual networks model had an impressive 152 layers. Key to the model design is the idea of residual blocks that make use of shortcut connections. These are simply connections in the network architecture where the input is kept as-is (not weighted) and passed on to a deeper layer, e.g. skipping the next layer.
+
+A residual block is a pattern of two convolutional layers with ReLU activation where the output of the block is combined with the input to the block, e.g. the shortcut connection. A projected version of the input used via 1×1 if the shape of the input to the block is different to the output of the block, so-called 1×1 convolutions. These are referred to as projected shortcut connections, compared to the unweighted or identity shortcut connections.
+
+The authors start with what they call a plain network, which is a VGG-inspired deep convolutional neural network with small filters (3×3), grouped convolutional layers followed with no pooling in between, and an average pooling at the end of the feature detector part of the model prior to the fully connected output layer with a softmax activation function.
+
+The plain network is modified to become a residual network by adding shortcut connections in order to define residual blocks. Typically the shape of the input for the shortcut connection is the same size as the output of the residual block.
+
+The image below was taken from the paper and from left to right compares the architecture of a VGG model, a plain convolutional model, and a version of the plain convolutional with residual modules, called a residual network.
+
+
+<figure class="image">
+  <img src="/images/resnet.webp" alt="Architecture of the ResNet Convolutional Neural Network for image classification">
+  <figcaption>Architecture of the ResNet Convolutional Neural Network for image classification</figcaption>
+</figure>
+
+We can summarize the key aspects of the architecture relevant in modern models as follows:
+
+    -Use of shortcut connections.
+    -Development and repetition of the residual blocks.
+    -Development of very deep (152-layer) models.
+    
+
+### 5. MobileNet - 2017
+
+MobileNets are built on depthwise seperable convolution layers.Each depthwise seperable convolution layer consists of a depthwise convolution and a pointwise convolution.Counting depthwise and pointwise convolutions as seperate layers, a MobileNet has 28 layers.A standard MobileNet has 4.2 million parameters which can be further reduced by tuning the width multiplier hyperparameter appropriately.
+The size of the input image is 224 × 224 × 3.
+
+The detailed architecture of a MobileNet is given below :
+
+<figure class="image">
+  <img src="/images/mobilenet.png" alt="Architecture of the MobileNet Convolutional Neural Network">
+  <figcaption>Architecture of the MobileNet Convolutional Neural Network</figcaption>
+</figure>
+
+MobileNets are a family of mobile-first computer vision models for TensorFlow, designed to effectively maximize accuracy while being mindful of the restricted resources for an on-device or embedded application.
+MobileNets are small, low-latency, low-power models parameterized to meet the resource constraints of a variety of use cases. They can be built upon for classification, detection, embeddings, and segmentation.
+
+
+## Results
 
 
 
 
+
+## Conclution
+
+
+## Refrences
+
+## Further Ideas
