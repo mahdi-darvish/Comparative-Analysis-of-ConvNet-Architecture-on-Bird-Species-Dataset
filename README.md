@@ -68,12 +68,13 @@ Let's dive deeper into how each of these models works and break down their archi
 AlexNet made use of the rectified linear activation function, or ReLU, as the nonlinearly after each convolutional layer, instead of S-shaped functions such as the logistic or tanh that were common up until that point. Also, a softmax activation function was used in the output layer, now a staple for multi-class classification with neural networks.
 
 The average pooling used in LeNet-5 was replaced with a max pooling method, although in this case, overlapping pooling was found to outperform non-overlapping pooling that is commonly used today (e.g. stride of pooling operation is the same size as the pooling operation, e.g. 2 by 2 pixels). To address overfitting, the newly proposed dropout method was used between the fully connected layers of the classifier part of the model to improve generalization error.
-<center>
-<figure class="image">
-  <img src="/images/alexnet.webp" alt="Architecture of the AlexNet Convolutional Neural Network">
-  <figcaption>Architecture of the AlexNet Convolutional Neural Network</figcaption>
-</figure>
-</center>
+
+<span class="img_container center" style="display: block;">
+    <img alt="test" src="/images/alexnet.webp" style="display:block; margin-left: auto; margin-right: auto;" title="𝘈𝘳𝘤𝘩𝘪𝘵𝘦𝘤𝘵𝘶𝘳𝘦 𝘰𝘧 𝘵𝘩𝘦 𝘈𝘭𝘦𝘹𝘕𝘦𝘵 𝘊𝘰𝘯𝘷𝘰𝘭𝘶𝘵𝘪𝘰𝘯𝘢𝘭 𝘕𝘦𝘶𝘳𝘢𝘭 𝘕𝘦𝘵𝘸𝘰𝘳𝘬" />
+    <span class="img_caption" style="display: block; text-align: center;">𝘈𝘳𝘤𝘩𝘪𝘵𝘦𝘤𝘵𝘶𝘳𝘦 𝘰𝘧 𝘵𝘩𝘦 𝘈𝘭𝘦𝘹𝘕𝘦𝘵 𝘊𝘰𝘯𝘷𝘰𝘭𝘶𝘵𝘪𝘰𝘯𝘢𝘭 𝘕𝘦𝘶𝘳𝘢𝘭 𝘕𝘦𝘵𝘸𝘰𝘳𝘬</span>
+</span>
+
+
 The model has five convolutional layers in the feature extraction part of the model and three fully connected layers in the classifier part of the model.
 
 Input images were fixed to the size 224×224 with three color channels. In terms of the number of filters used in each convolutional layer, the pattern of increasing the number of filters with depth seen in LeNet was mostly adhered to, in this case, the sizes: 96, 256, 384, 384, and 256. Similarly, the pattern of decreasing the size of the filter (kernel) with depth was used, starting from the smaller size of 11×11 and decreasing to 5×5, and then to 3×3 in the deeper layers. Use of small filters such as 5×5 and 3×3 is now the norm.
@@ -94,12 +95,12 @@ Another important difference is the very large number of filters used. The numbe
 A number of variants of the architecture were developed and evaluated, although two are referred to most commonly given their performance and depth. They are named for the number of layers: they are the VGG-16 and the VGG-19 for 16 and 19 learned layers, respectively.
 
 Below is a table is taken from the paper; note the two far right columns indicating the configuration (number of filters) used in the VGG-16 and VGG-19 versions of the architecture.
-<center>
-<figure class="image">
-  <img src="/images/vgg.png" alt="Architecture of the VGG Convolutional Neural Network (taken from the 2014 paper).">
-  <figcaption>Architecture of the AlexNet Convolutional Neural Network</figcaption>
-</figure>
-</center>
+
+<span class="img_container center" style="display: block;">
+    <img alt="test" src="/images/vgg.png" style="display:block; margin-left: auto; margin-right: auto;" title="𝐴𝑟𝑐ℎ𝑖𝑡𝑒𝑐𝑡𝑢𝑟𝑒 𝑜𝑓 𝑡ℎ𝑒 𝑉𝐺𝐺 𝐶𝑜𝑛𝑣𝑜𝑙𝑢𝑡𝑖𝑜𝑛𝑎𝑙 𝑁𝑒𝑢𝑟𝑎𝑙 𝑁𝑒𝑡𝑤𝑜𝑟𝑘 (𝑡𝑎𝑘𝑒𝑛 𝑓𝑟𝑜𝑚 𝑡ℎ𝑒 2014 𝑝𝑎𝑝𝑒𝑟)" />
+    <span class="img_caption" style="display: block; text-align: center;">𝐴𝑟𝑐ℎ𝑖𝑡𝑒𝑐𝑡𝑢𝑟𝑒 𝑜𝑓 𝑡ℎ𝑒 𝑉𝐺𝐺 𝐶𝑜𝑛𝑣𝑜𝑙𝑢𝑡𝑖𝑜𝑛𝑎𝑙 𝑁𝑒𝑢𝑟𝑎𝑙 𝑁𝑒𝑡𝑤𝑜𝑟𝑘 (𝑡𝑎𝑘𝑒𝑛 𝑓𝑟𝑜𝑚 𝑡ℎ𝑒 2014 𝑝𝑎𝑝𝑒𝑟)</span>
+</span>
+
 The design decisions in the VGG models have become the starting point for the simple and direct use of convolutional neural networks in general.
 
 Finally, the VGG work was among the first to release the valuable model weights under a permissive license that led to a trend among deep learning computer vision researchers. This, in turn, has led to the heavy use of pre-trained models like VGG in transfer learning as a starting point on new computer vision tasks.
@@ -113,24 +114,23 @@ A problem with a naive implementation of the inception model is that the number 
 
 Performing convolutions with larger filter sizes (e.g., 3 and 5) can be computationally expensive on a large number of filters. To address this, 1×1 convolutional layers are used to reduce the number of filters in the inception model. Specifically before the 3×3 and 5×5 convolutional layers and after the pooling layer. The image below taken from the paper shows this change to the inception module.
 
-<p align="center">
-<figure class="image">
-  <img src="/images/inception_1.webp" alt="Example of the Inception Module With Dimensionality Reduction (taken from the 2015 paper).">
-  <figcaption>Example of the Inception Module With Dimensionality Reduction (taken from the 2015 paper).</figcaption>
-</figure>
-</p>
+
+<span class="img_container center" style="display: block;">
+    <img alt="test" src="/images/inception_1.webp" style="display:block; margin-left: auto; margin-right: auto;" title="𝐸𝑥𝑎𝑚𝑝𝑙𝑒 𝑜𝑓 𝑡ℎ𝑒 𝐼𝑛𝑐𝑒𝑝𝑡𝑖𝑜𝑛 𝑀𝑜𝑑𝑢𝑙𝑒 𝑊𝑖𝑡ℎ 𝐷𝑖𝑚𝑒𝑛𝑠𝑖𝑜𝑛𝑎𝑙𝑖𝑡𝑦 𝑅𝑒𝑑𝑢𝑐𝑡𝑖𝑜𝑛 (𝑡𝑎𝑘𝑒𝑛 𝑓𝑟𝑜𝑚 𝑡ℎ𝑒 2015 𝑝𝑎𝑝𝑒𝑟)" />
+    <span class="img_caption" style="display: block; text-align: center;">𝐸𝑥𝑎𝑚𝑝𝑙𝑒 𝑜𝑓 𝑡ℎ𝑒 𝐼𝑛𝑐𝑒𝑝𝑡𝑖𝑜𝑛 𝑀𝑜𝑑𝑢𝑙𝑒 𝑊𝑖𝑡ℎ 𝐷𝑖𝑚𝑒𝑛𝑠𝑖𝑜𝑛𝑎𝑙𝑖𝑡𝑦 𝑅𝑒𝑑𝑢𝑐𝑡𝑖𝑜𝑛 (𝑡𝑎𝑘𝑒𝑛 𝑓𝑟𝑜𝑚 𝑡ℎ𝑒 2015 𝑝𝑎𝑝𝑒𝑟)</span>
+</span>
+
 
 
 A second important design decision in the inception model was connecting the output at different points in the model. This was achieved by creating small off-shoot output networks from the main network that were trained to make a prediction. The intent was to provide an additional error signal from the classification task at different points of the deep model in order to address the vanishing gradients problem. These small output networks were then removed after training.
 
 Overall, Inception-v3 is a convolutional neural network architecture from the Inception family that makes several improvements, including using Label Smoothing, Factorized 7 x 7 convolutions, and the use of an auxiliary classifier to propagate label information lower down the network (along with the use of batch normalization for layers in the sidehead).
 
-<p align="center">
-<figure class="image">
-  <img src="/images/inception_2.png" alt="Architecture of the InceptionV3 Convolutional Neural Network">
-  <figcaption>Architecture of the InceptionV3 Convolutional Neural Network</figcaption>
-</figure>
-</p>
+<span class="img_container center" style="display: block;">
+    <img alt="test" src="/images/inception_2.png" style="display:block; margin-left: auto; margin-right: auto;" title="𝐴𝑟𝑐ℎ𝑖𝑡𝑒𝑐𝑡𝑢𝑟𝑒 𝑜𝑓 𝑡ℎ𝑒 𝐼𝑛𝑐𝑒𝑝𝑡𝑖𝑜𝑛𝑉3 𝐶𝑜𝑛𝑣𝑜𝑙𝑢𝑡𝑖𝑜𝑛𝑎𝑙 𝑁𝑒𝑢𝑟𝑎𝑙 𝑁𝑒𝑡𝑤𝑜𝑟𝑘" />
+    <span class="img_caption" style="display: block; text-align: center;">𝐴𝑟𝑐ℎ𝑖𝑡𝑒𝑐𝑡𝑢𝑟𝑒 𝑜𝑓 𝑡ℎ𝑒 𝐼𝑛𝑐𝑒𝑝𝑡𝑖𝑜𝑛𝑉3 𝐶𝑜𝑛𝑣𝑜𝑙𝑢𝑡𝑖𝑜𝑛𝑎𝑙 𝑁𝑒𝑢𝑟𝑎𝑙 𝑁𝑒𝑡𝑤𝑜𝑟𝑘</span>
+</span>
+
 
 ### 4. Residual Network or ResNet - 2016
 
@@ -144,12 +144,13 @@ The plain network is modified to become a residual network by adding shortcut co
 
 The image below was taken from the paper and from left to right compares the architecture of a VGG model, a plain convolutional model, and a version of the plain convolutional with residual modules called a residual network.
 
-<p align="center">
-<figure class="image">
-  <img src="/images/resnet.webp" alt="Architecture of the ResNet Convolutional Neural Network for image classification">
-  <figcaption>Architecture of the ResNet Convolutional Neural Network for image classification</figcaption>
-</figure>
-</p>
+
+<span class="img_container center" style="display: block;">
+    <img alt="test" src="/images/resnet.webp" style="display:block; margin-left: auto; margin-right: auto;" title="𝐴𝑟𝑐ℎ𝑖𝑡𝑒𝑐𝑡𝑢𝑟𝑒 𝑜𝑓 𝑡ℎ𝑒 𝑅𝑒𝑠𝑁𝑒𝑡 𝐶𝑜𝑛𝑣𝑜𝑙𝑢𝑡𝑖𝑜𝑛𝑎𝑙 𝑁𝑒𝑢𝑟𝑎𝑙 𝑁𝑒𝑡𝑤𝑜𝑟𝑘 𝑓𝑜𝑟 𝑖𝑚𝑎𝑔𝑒 𝑐𝑙𝑎𝑠𝑠𝑖𝑓𝑖𝑐𝑎𝑡𝑖𝑜𝑛" />
+    <span class="img_caption" style="display: block; text-align: center;">𝐴𝑟𝑐ℎ𝑖𝑡𝑒𝑐𝑡𝑢𝑟𝑒 𝑜𝑓 𝑡ℎ𝑒 𝑅𝑒𝑠𝑁𝑒𝑡 𝐶𝑜𝑛𝑣𝑜𝑙𝑢𝑡𝑖𝑜𝑛𝑎𝑙 𝑁𝑒𝑢𝑟𝑎𝑙 𝑁𝑒𝑡𝑤𝑜𝑟𝑘 𝑓𝑜𝑟 𝑖𝑚𝑎𝑔𝑒 𝑐𝑙𝑎𝑠𝑠𝑖𝑓𝑖𝑐𝑎𝑡𝑖𝑜𝑛</span>
+</span>
+
+
 We can summarize the key aspects of the architecture relevant in modern models as follows:
 
     - Use of shortcut connections.
@@ -163,12 +164,15 @@ MobileNets are built on depthwise separable convolution layers.Each depthwise se
 The size of the input image is 224 × 224 × 3.
 
 The detailed architecture of a MobileNet is given below :
-<p align="center">
-<figure class="image">
-  <img src="/images/mobilenet.png" alt="Architecture of the MobileNet Convolutional Neural Network">
-  <figcaption>Architecture of the MobileNet Convolutional Neural Network</figcaption>
-</figure>
-</p>
+
+
+<span class="img_container center" style="display: block;">
+    <img alt="test" src="/images/mobilenet.png" style="display:block; margin-left: auto; margin-right: auto;" title="𝐴𝑟𝑐ℎ𝑖𝑡𝑒𝑐𝑡𝑢𝑟𝑒 𝑜𝑓 𝑡ℎ𝑒 𝑀𝑜𝑏𝑖𝑙𝑒𝑁𝑒𝑡 𝐶𝑜𝑛𝑣𝑜𝑙𝑢𝑡𝑖𝑜𝑛𝑎𝑙 𝑁𝑒𝑢𝑟𝑎𝑙 𝑁𝑒𝑡𝑤𝑜𝑟𝑘" />
+    <span class="img_caption" style="display: block; text-align: center;">𝐴𝑟𝑐ℎ𝑖𝑡𝑒𝑐𝑡𝑢𝑟𝑒 𝑜𝑓 𝑡ℎ𝑒 𝑀𝑜𝑏𝑖𝑙𝑒𝑁𝑒𝑡 𝐶𝑜𝑛𝑣𝑜𝑙𝑢𝑡𝑖𝑜𝑛𝑎𝑙 𝑁𝑒𝑢𝑟𝑎𝑙 𝑁𝑒𝑡𝑤𝑜𝑟𝑘</span>
+</span>
+
+
+
 MobileNets are a family of mobile-first computer vision models for TensorFlow, designed to effectively maximize accuracy while being mindful of the restricted resources for an on-device or embedded application.
 MobileNets are small, low-latency, low-power models parameterized to meet the resource constraints of a variety of use cases. They can be built upon for classification, detection, embeddings, and segmentation.
 
@@ -178,20 +182,31 @@ MobileNets are small, low-latency, low-power models parameterized to meet the re
  On the training data, as you can see, some models converge faster than others, like ResNet and MobileNet. However, faster convergence doesn't dedicate the highest accuracy (for example, VGG16 has more accuracy despite converging a bit later).
  
  On the bottom right plot, you can see the ResNet's validation loss doesn't come down as much as other models; this can indicate the model is overfitting on the training data.
-<p align="center">
-<figure class="image">
-  <img src="/images/results.png" alt="Architecture of the ResNet Convolutional Neural Network for image classification">
-  <figcaption>Architecture of the ResNet Convolutional Neural Network for image classification</figcaption>
-</figure>
-</p>
+ 
+ 
+ <span class="img_container center" style="display: block;">
+    <img alt="test" src="/images/results.png" style="display:block; margin-left: auto; margin-right: auto;" title="𝘈𝘳𝘤𝘩𝘪𝘵𝘦𝘤𝘵𝘶𝘳𝘦 𝘰𝘧 𝘵𝘩𝘦 𝘈𝘭𝘦𝘹𝘕𝘦𝘵 𝘊𝘰𝘯𝘷𝘰𝘭𝘶𝘵𝘪𝘰𝘯𝘢𝘭 𝘕𝘦𝘶𝘳𝘢𝘭 𝘕𝘦𝘵𝘸𝘰𝘳𝘬" />
+    <span class="img_caption" style="display: block; text-align: center;">𝘈𝘳𝘤𝘩𝘪𝘵𝘦𝘤𝘵𝘶𝘳𝘦 𝘰𝘧 𝘵𝘩𝘦 𝘈𝘭𝘦𝘹𝘕𝘦𝘵 𝘊𝘰𝘯𝘷𝘰𝘭𝘶𝘵𝘪𝘰𝘯𝘢𝘭 𝘕𝘦𝘶𝘳𝘢𝘭 𝘕𝘦𝘵𝘸𝘰𝘳𝘬</span>
+</span>
+
+
 
  ### Test Accuracy and Loss
+ 
+ <span class="img_container center" style="display: block;">
+    <img alt="test" src="/images/test.jpg" style="display:block; margin-left: auto; margin-right: auto;" title="𝘈𝘳𝘤𝘩𝘪𝘵𝘦𝘤𝘵𝘶𝘳𝘦 𝘰𝘧 𝘵𝘩𝘦 𝘈𝘭𝘦𝘹𝘕𝘦𝘵 𝘊𝘰𝘯𝘷𝘰𝘭𝘶𝘵𝘪𝘰𝘯𝘢𝘭 𝘕𝘦𝘶𝘳𝘢𝘭 𝘕𝘦𝘵𝘸𝘰𝘳𝘬" />
+    <span class="img_caption" style="display: block; text-align: center;">𝘈𝘳𝘤𝘩𝘪𝘵𝘦𝘤𝘵𝘶𝘳𝘦 𝘰𝘧 𝘵𝘩𝘦 𝘈𝘭𝘦𝘹𝘕𝘦𝘵 𝘊𝘰𝘯𝘷𝘰𝘭𝘶𝘵𝘪𝘰𝘯𝘢𝘭 𝘕𝘦𝘶𝘳𝘢𝘭 𝘕𝘦𝘵𝘸𝘰𝘳𝘬</span>
+</span>
+
+
+
 <p align="center">
 <figure class="image">
   <img src="/images/test.jpg" alt="Architecture of the ResNet Convolutional Neural Network for image classification">
   <figcaption>Architecture of the ResNet Convolutional Neural Network for image classification</figcaption>
 </figure>
 </p>
+
 
 
 
